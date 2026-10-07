@@ -1,0 +1,9 @@
+import { motion, useReducedMotion } from 'framer-motion';
+import { ArrowDown } from 'lucide-react';
+import { book } from '@/data/book';
+import { Container, CTAButton, DecorativeDivider, StoryLink } from './shared';
+
+export function Hero() {
+  const reduced = useReducedMotion();
+  return <section id="top" className="hero"><Container className="hero-grid"><motion.div className="hero-copy" initial={reduced ? false : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}><p className="eyebrow">A novel by Stephen Parks</p><h1 className="hero-title"><span>Lust <em>and</em></span><span>Love <em>and the</em></span><span className="title-last">Difference Of</span></h1><DecorativeDivider /><p className="hero-hook">Some places become memories.<br /><em>Blissview University becomes home.</em></p><p className="hero-description">At Blissview University, Sophia discovers friendship, belonging, and a kind of family she never expected. But when her bond with Jonathan Thomas grows into something neither can ignore, love and duty begin to collide.</p><div className="hero-actions"><CTAButton /><StoryLink /></div></motion.div><motion.div className="hero-art" initial={reduced ? false : { opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}><div className="art-frame" aria-hidden="true"><span className="frame-ornament">❧</span></div><div className="book-object"><img src={book.cover} alt="Official front cover of Lust and Love and the Difference Of by Stephen Parks, with hand-drawn artwork of Sophia and Jonathan" width="494" height="769" fetchPriority="high" /><div className="book-spine" aria-hidden="true" /></div><p className="cover-caption">LOVE. DUTY. CHOICE.</p></motion.div></Container><a className="hero-scroll" href="#novel"><ArrowDown size={15} /><span>Turn the page</span></a><div className="hero-bottom-rule" aria-hidden="true" /></section>;
+}
